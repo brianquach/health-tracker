@@ -1,0 +1,25 @@
+{
+  "name": "health-tracker",
+  "version": "1.0.0",
+  "description": "Web app that helps track your daily calorie powered by BackBoneJS.",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brianquach/health-tracker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brianquach/health-tracker/issues"
+  },
+  "homepage": "https://github.com/brianquach/health-tracker#readme"
+}
