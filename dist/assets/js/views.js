@@ -1,6 +1,6 @@
 var HealthTracker = HealthTracker || {};
 
-(function() {
+HealthTracker.Views = (function() {
   'use strict';
 
   var SearchView = Backbone.View.extend({
@@ -26,7 +26,14 @@ var HealthTracker = HealthTracker || {};
       console.log('app render');
     }
   });
-  var app = new App();
 
-  console.log('views');
+  var init = function() {
+      var app = new App();
+  };
+
+  return {
+    init: init
+  };
 })();
+
+HealthTracker.Views.init();

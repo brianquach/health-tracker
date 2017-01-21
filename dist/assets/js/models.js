@@ -1,6 +1,6 @@
 var HealthTracker = HealthTracker || {};
 
-(function() {
+HealthTracker.Models = (function() {
   'use strict'
 
   var FoodItem = Backbone.Model.extend({
@@ -14,5 +14,9 @@ var HealthTracker = HealthTracker || {};
   var FoodCollection = Backbone.Collection.extend({
     model: FoodItem
   });
-  console.log('models');
+
+  return {
+    FoodItem: FoodItem,
+    FoodCollection: FoodCollection
+  };
 })();
