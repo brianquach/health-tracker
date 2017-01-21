@@ -1,11 +1,22 @@
+var HealthTracker = HealthTracker || {};
+
 (function() {
   'use strict';
+
+  var SearchView = Backbone.View.extend({
+    className: 'food-search',
+    initialize: function() {
+      this.search = this.$el.find('.search');
+
+      console.log('search view init');
+    }
+  });
 
   var App = Backbone.View.extend({
     el: '#health-tracker',
     initialize: function() {
       this.totalCalories = this.$el.find('.total-calories');
-      this.foodSearch = this.$el.find('.food-search');
+      this.searchView = new SearchView();
 
       this.render();
       console.log('app init');
@@ -16,4 +27,6 @@
     }
   });
   var app = new App();
+
+  console.log('views');
 })();
