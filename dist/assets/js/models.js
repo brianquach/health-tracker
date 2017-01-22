@@ -15,8 +15,13 @@ HealthTracker.Models = (function() {
     model: FoodItem
   });
 
+  var SearchFoodCollection = Backbone.Collection.extend({
+    model: FoodItem
+  });
+
   return {
     FoodItem: FoodItem,
-    FoodCollection: FoodCollection
+    FoodCollection: FoodCollection,
+    SearchFoodCollection: SearchFoodCollection
   };
 })();

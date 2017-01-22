@@ -23,17 +23,20 @@
         <div class="col-xs-12">
           <h2>Search</h2>
           <input class="search" type="text" placeholder="Food Item">
-          <ul></ul>
+          <ul class="food-choices"></ul>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <h2>Food Items:</h2>
+          <h2>Food Items</h2>
           <ul></ul>
         </div>
       </div>
     </main>
 
+    <script id="food-search-item-template" type="text/template">
+      <span><%= name %></span>
+    </script>
     <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
     <script src="assets/js/vendor/underscore-min.js"></script>
