@@ -39,5 +39,5 @@ gulp.task('test', function() {
   return gulp.src(requiredTestFiles)
     .pipe(watch(requiredTestFiles))
     .pipe(jasmineBrowser.specRunner())
-    .pipe(jasmineBrowser.server({port: 8888}));
+    .pipe(jasmineBrowser.server({ port: 8888 }));
 });

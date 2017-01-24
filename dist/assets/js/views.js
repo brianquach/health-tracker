@@ -8,13 +8,14 @@ HealthTracker.Views = (function() {
     KEY: 'a9c550a6a475c562adf3ecfa44ec748a'
   };
   var HTModels = HealthTracker.Models;
+  var HTTemplates = HealthTracker.Templates;
 
   var FoodSearchItemView = Backbone.View.extend({
       tagName: 'li',
       events: {
         'click': 'select'
       },
-      template: _.template($('#food-search-item-template').html()),
+      template: _.template(HTTemplates.foodSearchDropDownOption),
       render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;

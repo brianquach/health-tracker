@@ -1,7 +1,7 @@
 var HealthTracker = HealthTracker || {};
 
 HealthTracker.Models = (function() {
-  'use strict'
+  'use strict';
 
   var FoodItem = Backbone.Model.extend({
     default: {
