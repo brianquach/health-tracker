@@ -1,5 +1,13 @@
+/**
+  * Health Tracker namespace.
+  * @namespace HealthTracker
+  */
 var HealthTracker = HealthTracker || {};
 
+/**
+  * Encapsultes all views.
+  * @namespace HealthTracker.Views
+  */
 HealthTracker.Views = (function() {
   'use strict';
 

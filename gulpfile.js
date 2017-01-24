@@ -1,10 +1,12 @@
 var gulp = require('gulp');
 var jasmineBrowser = require('gulp-jasmine-browser');
 var watch = require('gulp-watch');
+var jsdoc = require('gulp-jsdoc3');
 
 var paths = {
   scripts: './src/js/**/*.js',
-  styles: './src/css/**/*.css'
+  styles: './src/css/**/*.css',
+  readme: './README.md'
 }
 
 gulp.task('move-assets', function() {
@@ -22,8 +24,9 @@ gulp.task('build', ['move-assets']);
 gulp.task('default', watchScripts);
 
 function watchScripts() {
-    gulp.watch(paths.scripts, ['build']);
-    gulp.watch(paths.styles, ['build']);
+  gulp.watch(paths.readme, ['doc']);
+  gulp.watch(paths.scripts, ['build', 'doc']);
+  gulp.watch(paths.styles, ['build']);
 }
 
 gulp.task('test', function() {
@@ -40,4 +43,10 @@ gulp.task('test', function() {
     .pipe(watch(requiredTestFiles))
     .pipe(jasmineBrowser.specRunner())
     .pipe(jasmineBrowser.server({ port: 8888 }));
+});
+
+gulp.task('doc', function (cb) {
+  var filesToDocument = ['README.md', './src/js/*.js'];
+    gulp.src(filesToDocument, { read: false })
+      .pipe(jsdoc(cb));
 });
