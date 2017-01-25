@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: SearchFoodCollection</title>
+	<title>Documentation Class: FoodSearchItemView</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -72,15 +72,15 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: SearchFoodCollection</h1>
+	<h1 class="page-title">Class: FoodSearchItemView</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="HealthTracker.html">HealthTracker</a><a href="HealthTracker.Models.html">.Models</a>~</span>
+            <span class="ancestors"><a href="HealthTracker.html">HealthTracker</a><a href="HealthTracker.Views.html">.Views</a>~</span>
         
-        SearchFoodCollection
+        FoodSearchItemView
         </h2>
         
     
@@ -93,7 +93,7 @@
         
 <hr>
 <dt>
-    <h4 class="name" id="SearchFoodCollection"><span class="type-signature"></span>new SearchFoodCollection()</h4>
+    <h4 class="name" id="FoodSearchItemView"><span class="type-signature"></span>new FoodSearchItemView(model)</h4>
     
     
 </dt>
@@ -101,7 +101,7 @@
 
     
     <div class="description">
-        <p>Represents a collection of FoodItems.</p>
+        <p>Represents the food search dropdown option view.</p>
     </div>
     
 
@@ -110,6 +110,56 @@
     
 
     
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>model</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The FoodItem Model.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
     
 
     
@@ -163,6 +213,12 @@
     
 
     
+
+    
+        <h5>Example</h5>
+        
+    <pre class="sunlight-highlight-javascript">var foodSearchItemView = new FoodSearchItemView({ model: new FoodItem() });</pre>
+
 
     
 </dd>

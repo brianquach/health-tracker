@@ -7,6 +7,10 @@ var HealthTracker = HealthTracker || {};
 /**
   * Encapsultes all views.
   * @namespace HealthTracker.Views
+  * @property {object} nutritionixConfig Holds API ID and KEY for access to
+  *   Nutritionx API.
+  * @property {object} HTModels alias for HealthTracker.Models namespace.
+  * @property {object} HTTemplates alias for HealthTracker.Templates namespace.
   */
 HealthTracker.Views = (function() {
   'use strict';
@@ -18,32 +22,54 @@ HealthTracker.Views = (function() {
   var HTModels = HealthTracker.Models;
   var HTTemplates = HealthTracker.Templates;
 
+  /**
+   * Represents the food search dropdown option view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @param {object} model - The FoodItem Model.
+   * @example
+   * var foodSearchItemView = new FoodSearchItemView({ model: new FoodItem() });
+   */
   var FoodSearchItemView = Backbone.View.extend({
       tagName: 'li',
+
       events: {
         'click': 'select'
       },
+
       template: _.template(HTTemplates.foodSearchDropDownOption),
+
       render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;
       },
+
       select: function() {
         console.log('item selected');
       }
   });
 
+  /**
+   * Represents the food search view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var searchView = new SearchView();
+   */
   var SearchView = Backbone.View.extend({
     el: '.food-search',
+
     events: {
       'keydown .search': 'searchFoods'
     },
+
     initialize: function() {
       this.search = this.$el.find('.search');
       this.foodChoices = this.$el.find('.food-choices');
       this.searchFoodCollection = new HTModels.SearchFoodCollection();
       console.log('search view init');
     },
+
     searchFoods: _.debounce(function(e) {
       var self = this;
 
@@ -75,6 +101,7 @@ HealthTracker.Views = (function() {
         // TODO: handle error when API cannot connect
       });
     }, 400),
+
     render: function() {
       var foodItem;
       var self = this;
@@ -86,8 +113,17 @@ HealthTracker.Views = (function() {
     }
   });
 
+  /**
+   * Represents the Health Tracker app view.
+   * @constructor
+   * @memberof HealthTracker.Views
+   * @property {object} el View element.
+   * @example
+   * var app = new App();
+   */
   var App = Backbone.View.extend({
     el: '#health-tracker',
+    
     initialize: function() {
       this.totalCalories = this.$el.find('.total-calories');
       this.searchView = new SearchView();
@@ -95,12 +131,18 @@ HealthTracker.Views = (function() {
       this.render();
       console.log('app init');
     },
+
     render: function() {
       this.totalCalories.html('0 cal');
       console.log('app render');
     }
   });
 
+  /**
+   * Initializes the Health Tracker application.
+   * @function
+   * @memberof HealthTracker.Views~
+   */
   var init = function() {
       var app = new App();
   };
