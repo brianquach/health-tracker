@@ -123,7 +123,7 @@ HealthTracker.Views = (function() {
    */
   var App = Backbone.View.extend({
     el: '#health-tracker',
-    
+
     initialize: function() {
       this.totalCalories = this.$el.find('.total-calories');
       this.searchView = new SearchView();
