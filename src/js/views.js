@@ -7,7 +7,7 @@ var HealthTracker = HealthTracker || {};
 /**
   * Encapsultes all views.
   * @namespace HealthTracker.Views
-  * @property {object} nutritionixConfig Holds API ID and KEY for access to
+  * @property {object} nutritionixHeader Holds API ID and KEY for access to
   *   Nutritionx API.
   * @property {object} HTModels alias for HealthTracker.Models namespace.
   * @property {object} HTTemplates alias for HealthTracker.Templates namespace.
@@ -15,9 +15,9 @@ var HealthTracker = HealthTracker || {};
 HealthTracker.Views = (function() {
   'use strict';
 
-  var nutritionixConfig = {
-    ID: 'fff9731b',
-    KEY: 'a9c550a6a475c562adf3ecfa44ec748a'
+  var nutritionixHeader = {
+    "x-app-id": 'fff9731b',
+    "x-app-key": 'a9c550a6a475c562adf3ecfa44ec748a'
   };
   var HTModels = HealthTracker.Models;
   var HTTemplates = HealthTracker.Templates;
@@ -39,13 +39,36 @@ HealthTracker.Views = (function() {
 
       template: _.template(HTTemplates.foodSearchDropDownOption),
 
+      initialize: function() {
+        this.foodCollection = new FoodCollection();
+      },
+
       render: function() {
         this.$el.html(this.template(this.model.attributes));
         return this;
       },
 
       select: function() {
-        console.log('item selected');
+        var query = this.model.get('name');
+
+        $.ajax('https://trackapi.nutritionix.com/v2/natural/nutrients/', {
+          method: 'POST',
+          data: {
+            query: query,
+            num_servings: 1,
+          },
+          headers: nutritionixHeader
+        }).done(function(resp) {
+          var food = resp.foods[0];
+          var foodItem = new FoodItem({
+            name: food.food_name,
+            calories: food.nf_calories,
+            fat: food.nf_total_fat
+          });
+          this.foodCollection.add(foodItem);
+        }).fail(function() {
+          // TODO: handle error when API cannot connect
+        });
       }
   });
 
@@ -60,7 +83,8 @@ HealthTracker.Views = (function() {
     el: '.food-search',
 
     events: {
-      'keydown .search': 'searchFoods'
+      'keydown .search': 'searchFoods',
+      'foodselected': 'foodSelected'
     },
 
     initialize: function() {
@@ -70,6 +94,16 @@ HealthTracker.Views = (function() {
       console.log('search view init');
     },
 
+    render: function() {
+      var foodItem;
+      var self = this;
+      self.foodChoices.html('');
+      this.searchFoodCollection.each(function(f) {
+        foodItem = new FoodSearchItemView({ model: f });
+        self.foodChoices.append(foodItem.render().el);
+      });
+    },
+    
     searchFoods: _.debounce(function(e) {
       var self = this;
 
@@ -82,10 +116,7 @@ HealthTracker.Views = (function() {
           self: false,
           branded: false
         },
-        headers: {
-          "x-app-id": nutritionixConfig.ID,
-          "x-app-key": nutritionixConfig.KEY
-        }
+        headers: nutritionixHeader
       }).done(function(resp) {
         var foodItem;
         var foodItems = resp.common;
@@ -102,14 +133,9 @@ HealthTracker.Views = (function() {
       });
     }, 400),
 
-    render: function() {
-      var foodItem;
-      var self = this;
+    foodSelected: function() {
+      self.searchFoodCollection.reset();
       self.foodChoices.html('');
-      this.searchFoodCollection.each(function(f) {
-        foodItem = new FoodSearchItemView({ model: f });
-        self.foodChoices.append(foodItem.render().el);
-      });
     }
   });
 

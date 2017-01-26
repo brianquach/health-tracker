@@ -22,11 +22,15 @@ gulp.task('move-assets', function() {
 gulp.task('build', ['move-assets']);
 
 gulp.task('default', watchScripts);
-
 function watchScripts() {
-  gulp.watch(paths.readme, ['doc']);
-  gulp.watch(paths.scripts, ['build', 'doc']);
+  gulp.watch(paths.scripts, ['build']);
   gulp.watch(paths.styles, ['build']);
+}
+
+gulp.task('watch-doc', watchDocumentation)
+function watchDocumentation() {
+  gulp.watch(paths.readme, ['doc']);
+  gulp.watch(paths.scripts, ['doc']);
 }
 
 gulp.task('test', function() {
