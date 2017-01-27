@@ -27,54 +27,6 @@ HealthTracker.Views = (function() {
   var foodCollection;
 
   /**
-   * Represents the food search dropdown option view.
-   * @constructor
-   * @memberof HealthTracker.Views~
-   * @param {object} model - The FoodItem Model.
-   * @example
-   * var foodSearchItemView = new FoodSearchItemView({ model: new FoodItem() });
-   */
-  var FoodSearchItemView = Backbone.View.extend({
-      tagName: 'li',
-
-      events: {
-        'click': 'select'
-      },
-
-      template: _.template(HTTemplates.foodSearchDropDownOption),
-
-      render: function() {
-        this.$el.html(this.template(this.model.attributes));
-        return this;
-      },
-
-      select: function() {
-        var query = this.model.get('name');
-
-        $.ajax('https://trackapi.nutritionix.com/v2/natural/nutrients/', {
-          method: 'POST',
-          data: {
-            query: query,
-            num_servings: 1,
-          },
-          headers: nutritionixHeader
-        }).done(function(resp) {
-          var food = resp.foods[0];
-          var foodItem = new HTModels.FoodItem({
-            name: food.food_name,
-            calories: food.nf_calories,
-            fat: food.nf_total_fat
-          });
-
-          foodCollection.add(foodItem);
-          searchView.trigger('foodselected');
-        }).fail(function() {
-          // TODO: handle error when API cannot connect
-        });
-      }
-  });
-
-  /**
    * Represents the food search view.
    * @constructor
    * @memberof HealthTracker.Views~
@@ -103,7 +55,7 @@ HealthTracker.Views = (function() {
       var self = this;
       self.foodChoices.html('');
       this.searchFoodCollection.each(function(f) {
-        foodItem = new FoodSearchItemView({ model: f });
+        foodItem = new SearchItemView({ model: f });
         self.foodChoices.append(foodItem.render().el);
       });
     },
@@ -147,6 +99,54 @@ HealthTracker.Views = (function() {
       this.searchFoodCollection.reset();
       this.foodChoices.html('');
     }
+  });
+
+  /**
+   * Represents the food search dropdown option view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @param {object} model - The FoodItem Model.
+   * @example
+   * var searchItemView = new SearchItemView({ model: new FoodItem() });
+   */
+  var SearchItemView = Backbone.View.extend({
+      tagName: 'li',
+
+      events: {
+        'click': 'select'
+      },
+
+      template: _.template(HTTemplates.foodSearchDropDownOption),
+
+      render: function() {
+        this.$el.html(this.template(this.model.attributes));
+        return this;
+      },
+
+      select: function() {
+        var query = this.model.get('name');
+
+        $.ajax('https://trackapi.nutritionix.com/v2/natural/nutrients/', {
+          method: 'POST',
+          data: {
+            query: query,
+            num_servings: 1,
+          },
+          headers: nutritionixHeader
+        }).done(function(resp) {
+          var food = resp.foods[0];
+          var foodItem = new HTModels.FoodItem({
+            name: food.food_name,
+            calories: food.nf_calories,
+            fat: food.nf_total_fat
+          });
+
+          foodCollection.add(foodItem);
+          searchView.trigger('foodselected');
+        }).fail(function() {
+          // TODO: handle error when API cannot connect
+        });
+      }
   });
 
   /**
