@@ -22,6 +22,10 @@ HealthTracker.Views = (function() {
   var HTModels = HealthTracker.Models;
   var HTTemplates = HealthTracker.Templates;
 
+  var searchView;
+  var foodListView;
+  var foodCollection;
+
   /**
    * Represents the food search dropdown option view.
    * @constructor
@@ -38,10 +42,6 @@ HealthTracker.Views = (function() {
       },
 
       template: _.template(HTTemplates.foodSearchDropDownOption),
-
-      initialize: function() {
-        this.foodCollection = new FoodCollection();
-      },
 
       render: function() {
         this.$el.html(this.template(this.model.attributes));
@@ -60,12 +60,14 @@ HealthTracker.Views = (function() {
           headers: nutritionixHeader
         }).done(function(resp) {
           var food = resp.foods[0];
-          var foodItem = new FoodItem({
+          var foodItem = new HTModels.FoodItem({
             name: food.food_name,
             calories: food.nf_calories,
             fat: food.nf_total_fat
           });
-          this.foodCollection.add(foodItem);
+
+          foodCollection.add(foodItem);
+          searchView.trigger('foodselected');
         }).fail(function() {
           // TODO: handle error when API cannot connect
         });
@@ -84,14 +86,16 @@ HealthTracker.Views = (function() {
 
     events: {
       'keydown .search': 'searchFoods',
-      'foodselected': 'foodSelected'
     },
 
     initialize: function() {
       this.search = this.$el.find('.search');
       this.foodChoices = this.$el.find('.food-choices');
       this.searchFoodCollection = new HTModels.SearchFoodCollection();
-      console.log('search view init');
+
+      this.on({
+        'foodselected': this.clearSearch
+      });
     },
 
     render: function() {
@@ -103,16 +107,21 @@ HealthTracker.Views = (function() {
         self.foodChoices.append(foodItem.render().el);
       });
     },
-    
+
     searchFoods: _.debounce(function(e) {
       var self = this;
+      var query = this.search.val();
 
       self.searchFoodCollection.reset();
+
+      if (!query) {
+          return;
+      }
 
       $.ajax('https://trackapi.nutritionix.com/v2/search/instant', {
         method: 'GET',
         data: {
-          query: this.search.val(),
+          query: ,
           self: false,
           branded: false
         },
@@ -133,9 +142,30 @@ HealthTracker.Views = (function() {
       });
     }, 400),
 
-    foodSelected: function() {
-      self.searchFoodCollection.reset();
-      self.foodChoices.html('');
+    clearSearch: function() {
+      this.search.val('');
+      this.searchFoodCollection.reset();
+      this.foodChoices.html('');
+    }
+  });
+
+  /**
+   * Represents the food list view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var foodListView = new FoodListView();
+   */
+  var FoodListView = Backbone.View.extend({
+    el: '.food-list',
+
+    initialize: function() {
+      this.listenTo(foodCollection, 'add', this.render);
+    },
+
+    render: function(foodItem) {
+      var foodListItemHTML = _.template(HTTemplates.foodListItem);
+      this.$el.append(foodListItemHTML(foodItem.attributes));
     }
   });
 
@@ -152,15 +182,17 @@ HealthTracker.Views = (function() {
 
     initialize: function() {
       this.totalCalories = this.$el.find('.total-calories');
-      this.searchView = new SearchView();
+
+      foodCollection = new HTModels.FoodCollection();
+
+      searchView = new SearchView();
+      foodListView = new FoodListView();
 
       this.render();
-      console.log('app init');
     },
 
     render: function() {
       this.totalCalories.html('0 cal');
-      console.log('app render');
     }
   });
 
