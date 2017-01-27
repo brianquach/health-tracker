@@ -31,7 +31,12 @@ HealthTracker.Models = (function() {
    * @memberof HealthTracker.Models~
    */
   var FoodCollection = Backbone.Collection.extend({
-    model: FoodItem
+    model: FoodItem,
+
+    saveToLocalStorage: function() {
+      var foodListSave = JSON.stringify(this.models);
+      localStorage.setItem('healthTrackerFoodList', foodListSave);
+    }
   });
 
   /**

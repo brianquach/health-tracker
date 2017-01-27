@@ -142,6 +142,7 @@ HealthTracker.Views = (function() {
           });
 
           foodCollection.add(foodItem);
+          foodCollection.saveToLocalStorage();
           searchView.trigger('foodselected');
         }).fail(function() {
           // TODO: handle error when API cannot connect
@@ -193,6 +194,7 @@ HealthTracker.Views = (function() {
     removeFoodItem: function() {
       foodCollection.remove(this.model);
       this.$el.remove();
+      foodCollection.saveToLocalStorage();
     }
   });
 
@@ -219,6 +221,11 @@ HealthTracker.Views = (function() {
       this.listenTo(foodCollection, 'add', this.addTotalCalories);
       this.listenTo(foodCollection, 'remove', this.subtractTotalCalories);
 
+      var storedState = localStorage.getItem('healthTrackerFoodList');
+      if (storedState) {
+        this.loadState(storedState);
+      }
+
       this.render();
     },
 
@@ -234,6 +241,19 @@ HealthTracker.Views = (function() {
     subtractTotalCalories: function(foodItem) {
       this.totalCalories = this.totalCalories - foodItem.get('calories');
       this.totalCaloriesEl.html(this.totalCalories + ' cal');
+    },
+
+    loadState: function(state) {
+      var foodItems = JSON.parse(state);
+      var foodItem;
+      _.forEach(foodItems, function(fi) {
+        foodItem = new HTModels.FoodItem({
+          name: fi.name,
+          calories: fi.calories,
+          fat: fi.fat
+        });
+        foodCollection.add(foodItem);
+      });
     }
   });
 
