@@ -197,26 +197,6 @@ HealthTracker.Views = (function() {
   });
 
   /**
-   * Represents the food list view.
-   * @constructor
-   * @memberof HealthTracker.Views~
-   * @example
-   * var foodListView = new FoodListView();
-   */
-  var FoodListView = Backbone.View.extend({
-    el: '.food-list',
-
-    initialize: function() {
-      this.listenTo(foodCollection, 'add', this.render);
-    },
-
-    render: function(foodItem) {
-      var foodListItemHTML = _.template(HTTemplates.foodListItem);
-      this.$el.append(foodListItemHTML(foodItem.attributes));
-    }
-  });
-
-  /**
    * Represents the Health Tracker app view.
    * @constructor
    * @memberof HealthTracker.Views
