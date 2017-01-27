@@ -21,6 +21,7 @@ HealthTracker.Views = (function() {
   };
   var HTModels = HealthTracker.Models;
   var HTTemplates = HealthTracker.Templates;
+  var HTCollections = HealthTracker.Collections;
 
   var searchView;
   var foodListView;
@@ -43,7 +44,7 @@ HealthTracker.Views = (function() {
     initialize: function() {
       this.search = this.$el.find('.search');
       this.foodChoices = this.$el.find('.food-choices');
-      this.searchFoodCollection = new HTModels.SearchFoodCollection();
+      this.searchFoodCollection = new HTCollections.SearchFoodCollection();
 
       this.on({
         'foodselected': this.clearSearch
@@ -213,7 +214,7 @@ HealthTracker.Views = (function() {
       this.totalCaloriesEl = this.$el.find('.total-calories');
       this.totalCalories = 0;
 
-      foodCollection = new HTModels.FoodCollection();
+      foodCollection = new HTCollections.FoodCollection();
 
       searchView = new SearchView();
       foodListView = new FoodListView();

@@ -1,7 +1,7 @@
 var HealthTracker = HealthTracker || {};
 
 /**
-  * Encapsultes all the models and collections.
+  * Encapsultes all the models.
   * @namespace HealthTracker.Models
   */
 HealthTracker.Models = (function() {
@@ -24,33 +24,8 @@ HealthTracker.Models = (function() {
       fat: 0
     }
   });
-
-  /**
-   * Represents a collection of FoodItems.
-   * @constructor
-   * @memberof HealthTracker.Models~
-   */
-  var FoodCollection = Backbone.Collection.extend({
-    model: FoodItem,
-
-    saveToLocalStorage: function() {
-      var foodListSave = JSON.stringify(this.models);
-      localStorage.setItem('healthTrackerFoodList', foodListSave);
-    }
-  });
-
-  /**
-   * Represents a collection of FoodItems.
-   * @constructor
-   * @memberof HealthTracker.Models~
-   */
-  var SearchFoodCollection = Backbone.Collection.extend({
-    model: FoodItem
-  });
-
+  
   return {
-    FoodItem: FoodItem,
-    FoodCollection: FoodCollection,
-    SearchFoodCollection: SearchFoodCollection
+    FoodItem: FoodItem
   };
 })();
