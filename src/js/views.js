@@ -110,7 +110,7 @@ HealthTracker.Views = (function() {
 
     searchFoods: _.debounce(function(e) {
       var self = this;
-      var query = this.search.val();
+      var query = this.search.val().trim();
 
       self.searchFoodCollection.reset();
 
@@ -121,7 +121,7 @@ HealthTracker.Views = (function() {
       $.ajax('https://trackapi.nutritionix.com/v2/search/instant', {
         method: 'GET',
         data: {
-          query: ,
+          query: query,
           self: false,
           branded: false
         },
@@ -164,6 +164,53 @@ HealthTracker.Views = (function() {
     },
 
     render: function(foodItem) {
+      var foodListItemView = new FoodListItemView({ model: foodItem });
+      this.$el.append(foodListItemView.render().el);
+    }
+  });
+
+  /**
+   * Represents the food list item view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var foodListItemView = new FoodListItemView();
+   */
+  var FoodListItemView = Backbone.View.extend({
+    tagName: 'li',
+
+    template: _.template(HTTemplates.foodListItem),
+
+    events: {
+      'click .food-list__remove': 'removeFoodItem'
+    },
+
+    render: function() {
+      this.$el.html(this.template(this.model.attributes));
+      return this;
+    },
+
+    removeFoodItem: function() {
+      foodCollection.remove(this.model);
+      this.$el.remove();
+    }
+  });
+
+  /**
+   * Represents the food list view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var foodListView = new FoodListView();
+   */
+  var FoodListView = Backbone.View.extend({
+    el: '.food-list',
+
+    initialize: function() {
+      this.listenTo(foodCollection, 'add', this.render);
+    },
+
+    render: function(foodItem) {
       var foodListItemHTML = _.template(HTTemplates.foodListItem);
       this.$el.append(foodListItemHTML(foodItem.attributes));
     }
@@ -181,18 +228,32 @@ HealthTracker.Views = (function() {
     el: '#health-tracker',
 
     initialize: function() {
-      this.totalCalories = this.$el.find('.total-calories');
+      this.totalCaloriesEl = this.$el.find('.total-calories');
+      this.totalCalories = 0;
 
       foodCollection = new HTModels.FoodCollection();
 
       searchView = new SearchView();
       foodListView = new FoodListView();
 
+      this.listenTo(foodCollection, 'add', this.addTotalCalories);
+      this.listenTo(foodCollection, 'remove', this.subtractTotalCalories);
+
       this.render();
     },
 
     render: function() {
-      this.totalCalories.html('0 cal');
+      this.totalCaloriesEl.html(this.totalCalories + ' cal');
+    },
+
+    addTotalCalories: function(foodItem) {
+      this.totalCalories = this.totalCalories + foodItem.get('calories');
+      this.totalCaloriesEl.html(this.totalCalories + ' cal');
+    },
+
+    subtractTotalCalories: function(foodItem) {
+      this.totalCalories = this.totalCalories - foodItem.get('calories');
+      this.totalCaloriesEl.html(this.totalCalories + ' cal');
     }
   });
 

@@ -14,6 +14,7 @@ HealthTracker.Templates = (function() {
       * @memberof HealthTracker.Templates.
       */
     foodSearchDropDownOption: '<span><%= name %></span>',
-    foodListItem: '<span><%= name %></span><span>cal: <%= calories %></span>'
+    foodListItem: '<span><%= name %></span><span>cal: <%= calories %></span>' +
+      '<button class="food-list__remove">remove</button>'
   }
 })();
