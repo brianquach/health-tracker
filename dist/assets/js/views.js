@@ -193,6 +193,30 @@ HealthTracker.Views = (function() {
     removeFoodItem: function() {
       foodCollection.remove(this.model);
       this.$el.remove();
+
+    clearSearch: function() {
+      this.searchFoodCollection.reset();
+      this.foodChoices.html('');
+    }
+  });
+
+  /**
+   * Represents the food list view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var foodListView = new FoodListView();
+   */
+  var FoodListView = Backbone.View.extend({
+    el: '.food-list',
+
+    initialize: function() {
+      this.listenTo(foodCollection, 'add', this.render);
+    },
+
+    render: function(foodItem) {
+      var foodListItemHTML = _.template(HTTemplates.foodListItem);
+      this.$el.append(foodListItemHTML(foodItem.attributes));
     }
   });
 
