@@ -110,7 +110,7 @@ HealthTracker.Views = (function() {
 
     searchFoods: _.debounce(function(e) {
       var self = this;
-      var query = this.search.val();
+      var query = this.search.val().trim();
 
       self.searchFoodCollection.reset();
 
@@ -121,7 +121,7 @@ HealthTracker.Views = (function() {
       $.ajax('https://trackapi.nutritionix.com/v2/search/instant', {
         method: 'GET',
         data: {
-          query: ,
+          query: query,
           self: false,
           branded: false
         },
@@ -164,8 +164,35 @@ HealthTracker.Views = (function() {
     },
 
     render: function(foodItem) {
-      var foodListItemHTML = _.template(HTTemplates.foodListItem);
-      this.$el.append(foodListItemHTML(foodItem.attributes));
+      var foodListItemView = new FoodListItemView({ model: foodItem });
+      this.$el.append(foodListItemView.render().el);
+    }
+  });
+
+  /**
+   * Represents the food list item view.
+   * @constructor
+   * @memberof HealthTracker.Views~
+   * @example
+   * var foodListItemView = new FoodListItemView();
+   */
+  var FoodListItemView = Backbone.View.extend({
+    tagName: 'li',
+
+    template: _.template(HTTemplates.foodListItem),
+
+    events: {
+      'click .food-list__remove': 'removeFoodItem'
+    },
+
+    render: function() {
+      this.$el.html(this.template(this.model.attributes));
+      return this;
+    },
+
+    removeFoodItem: function() {
+      foodCollection.remove(this.model);
+      this.$el.remove();
     }
   });
 
