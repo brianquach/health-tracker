@@ -13,6 +13,7 @@ HealthTracker.Templates = (function() {
     /** Represents a food search dropdown option HTML template.
       * @memberof HealthTracker.Templates.
       */
-    foodSearchDropDownOption: '<span><%= name %></span>'
+    foodSearchDropDownOption: '<span><%= name %></span>',
+    foodListItem: '<span><%= name %></span><span>cal: <%= calories %></span>'
   }
 })();
