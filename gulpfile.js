@@ -2,10 +2,12 @@ var gulp = require('gulp');
 var jasmineBrowser = require('gulp-jasmine-browser');
 var watch = require('gulp-watch');
 var jsdoc = require('gulp-jsdoc3');
+var sass = require('gulp-sass');
 
 var paths = {
   scripts: './src/js/**/*.js',
   styles: './src/css/**/*.css',
+  preStyles: './src/css/**/*.scss',
   readme: './README.md'
 }
 
@@ -14,12 +16,13 @@ gulp.task('default', watchScripts);
 function watchScripts() {
   gulp.watch(paths.scripts, ['build']);
   gulp.watch(paths.styles, ['build']);
+  gulp.watch(paths.preStyles, ['sass']);
 }
 
 /** Project standard build process */
 gulp.task('build', ['move-assets']);
 
-gulp.task('move-assets', function() {
+gulp.task('move-assets', ['compile-sass'], function() {
   // Move JS files
   gulp.src('./src/js/**/*.js')
     .pipe(gulp.dest('./dist/assets/js'));
@@ -27,6 +30,13 @@ gulp.task('move-assets', function() {
   // Move CSS files
   gulp.src('./src/css/**/*.css')
     .pipe(gulp.dest('./dist/assets/css'));
+});
+
+/** Compile Sass */
+gulp.task('compile-sass', function() {
+  return gulp.src('./src/css/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./src/css'));
 });
 
 /** Task to generate documentation from code comments */
