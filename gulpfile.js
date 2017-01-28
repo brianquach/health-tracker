@@ -16,7 +16,7 @@ gulp.task('default', watchScripts);
 function watchScripts() {
   gulp.watch(paths.scripts, ['build']);
   gulp.watch(paths.styles, ['build']);
-  gulp.watch(paths.preStyles, ['sass']);
+  gulp.watch(paths.preStyles, ['compile-sass']);
 }
 
 /** Project standard build process */
