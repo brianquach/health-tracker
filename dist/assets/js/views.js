@@ -35,7 +35,7 @@ HealthTracker.Views = (function() {
    * var searchView = new SearchView();
    */
   var SearchView = Backbone.View.extend({
-    el: '.food-search',
+    el: '.js-food-search',
 
     events: {
       'keydown .search': 'searchFoods',
@@ -159,7 +159,7 @@ HealthTracker.Views = (function() {
    * var foodListView = new FoodListView();
    */
   var FoodListView = Backbone.View.extend({
-    el: '.food-list',
+    el: '.js-food-list',
 
     initialize: function() {
       this.listenTo(foodCollection, 'add', this.render);
