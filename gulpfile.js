@@ -9,6 +9,16 @@ var paths = {
   readme: './README.md'
 }
 
+/** Default task is set to watch files for changes for continuous building */
+gulp.task('default', watchScripts);
+function watchScripts() {
+  gulp.watch(paths.scripts, ['build']);
+  gulp.watch(paths.styles, ['build']);
+}
+
+/** Project standard build process */
+gulp.task('build', ['move-assets']);
+
 gulp.task('move-assets', function() {
   // Move JS files
   gulp.src('./src/js/**/*.js')
@@ -19,20 +29,20 @@ gulp.task('move-assets', function() {
     .pipe(gulp.dest('./dist/assets/css'));
 });
 
-gulp.task('build', ['move-assets']);
-
-gulp.task('default', watchScripts);
-function watchScripts() {
-  gulp.watch(paths.scripts, ['build']);
-  gulp.watch(paths.styles, ['build']);
-}
-
+/** Task to generate documentation from code comments */
 gulp.task('watch-doc', watchDocumentation)
 function watchDocumentation() {
   gulp.watch(paths.readme, ['doc']);
   gulp.watch(paths.scripts, ['doc']);
 }
 
+gulp.task('doc', function (cb) {
+  var filesToDocument = ['README.md', './src/js/*.js'];
+    gulp.src(filesToDocument, { read: false })
+      .pipe(jsdoc(cb));
+});
+
+/** Run Jasmine behavioral testing */
 gulp.task('test', function() {
   var requiredTestFiles = [
     'src/js/vendor/underscore-min.js',
@@ -47,10 +57,4 @@ gulp.task('test', function() {
     .pipe(watch(requiredTestFiles))
     .pipe(jasmineBrowser.specRunner())
     .pipe(jasmineBrowser.server({ port: 8888 }));
-});
-
-gulp.task('doc', function (cb) {
-  var filesToDocument = ['README.md', './src/js/*.js'];
-    gulp.src(filesToDocument, { read: false })
-      .pipe(jsdoc(cb));
 });
