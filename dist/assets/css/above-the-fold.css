@@ -1,0 +1,45 @@
+/* Default variables */
+/* Mixins */
+header {
+  text-align: center;
+  padding: 25px 0;
+  background-color: #f95036; }
+
+.health-tracker {
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  color: #282828;
+  background-color: #e5e5e5; }
+  .health-tracker h1,
+  .health-tracker h2,
+  .health-tracker h3,
+  .health-tracker h4,
+  .health-tracker h5,
+  .health-tracker h6 {
+    font-weight: 900; }
+  .health-tracker h1 {
+    margin: 0;
+    font-size: 4rem; }
+  .health-tracker h2 {
+    font-size: 3.2rem; }
+
+.health-tracker__summary {
+  background-color: #f3f3f3; }
+  .health-tracker__summary label {
+    margin-right: 10px;
+    font-weight: bold; }
+
+.health-tracker__search {
+  border-top: #f0f0f0;
+  background-color: #efefef; }
+  .health-tracker__search .search {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px; }
+
+.health-tracker__food-list {
+  border-top: #eeeeee; }

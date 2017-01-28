@@ -1,0 +1,70 @@
+/* Default variables */
+$font-stack: Helvetica, sans-serif;
+$font-color: #282828;
+$font-size: 18px;
+
+$heading-weight: 900;
+
+/* Mixins */
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+header {
+  text-align: center;
+  padding: 25px 0;
+  background-color: #f95036;
+}
+
+.health-tracker {
+  font-family: $font-stack;
+  font-size: $font-size;
+  color: $font-color;
+  background-color: #e5e5e5;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: $heading-weight;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 3.2rem;
+  }
+}
+
+.health-tracker__summary {
+  background-color: #f3f3f3;
+
+  label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+}
+
+.health-tracker__search {
+  border-top: #f0f0f0;
+  background-color: #efefef;
+
+  .search {
+    width: 100%;
+    border: 1px solid #333;
+    padding: 5px;
+    @include border-radius(3px);
+  }
+}
+
+.health-tracker__food-list {
+  border-top: #eeeeee;
+}

@@ -4,38 +4,42 @@
     <title>Health Tracker</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="assets/css/above-the-fold.css" rel="stylesheet">
   </head>
 
-  <body>
+  <body class="health-tracker">
     <header>
       <h1>Health Tracker</h1>
     </header>
-    <main id="health-tracker" class="fluid-grid">
-      <div class="row">
+    <main id="health-tracker" class="container-fluid">
+      <div class="row health-tracker__summary">
         <div class="col-xs-12">
           <h2>Summary</h2>
         </div>
         <div class="col-xs-12">
-          <span>Total Calories: </span><span class="total-calories"></span>
+          <label>Total Calories: </label><span class="total-calories"></span>
         </div>
       </div>
-      <div class="row food-search">
+      <div class="row health-tracker__search js-food-search">
         <div class="col-xs-12">
           <h2>Search</h2>
-          <input class="search" type="text" placeholder="Food Item">
-          <ul class="food-choices"></ul>
+          <input class="search" type="text" placeholder="Search foods">
+          <div class="food-choices-wrapper">
+            <ul class="food-choices"></ul>
+          </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row health-tracker__food-list">
         <div class="col-xs-12">
           <h2>Food Items</h2>
-          <ul class="food-list"></ul>
+          <ul class="js-food-list"></ul>
         </div>
       </div>
     </main>
 
     <link href="assets/css/vendor/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/style.css" rel="stylesheet">
+
     <script src="assets/js/vendor/underscore-min.js"></script>
     <script src="assets/js/vendor/jquery.min.js"></script>
     <script src="assets/js/vendor/backbone-min.js"></script>

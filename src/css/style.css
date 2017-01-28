@@ -1,3 +1,17 @@
-body {
-  font-family: Helvetica, sans-serif;
-  color: #333333; }
+.health-tracker__search .food-choices-wrapper {
+  position: relative; }
+
+.health-tracker__search .food-choices {
+  position: absolute;
+  background-color: #fefefe;
+  z-index: 1;
+  padding: 0;
+  list-style: none;
+  top: 0;
+  left: 0;
+  right: 0; }
+
+.health-tracker__search li {
+  padding: 2px;
+  border: 1px solid #333333;
+  border-top: none; }
