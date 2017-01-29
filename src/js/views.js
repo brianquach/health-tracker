@@ -84,7 +84,8 @@ HealthTracker.Views = (function() {
         var foodItems = resp.common;
         _.forEach(foodItems, function(f) {
           foodItem = new HTModels.FoodItem({
-            name: f.food_name
+            name: f.food_name,
+            thumbnailURL: f.photo.thumb
           });
           self.searchFoodCollection.add(foodItem);
         });
@@ -139,7 +140,8 @@ HealthTracker.Views = (function() {
           var foodItem = new HTModels.FoodItem({
             name: food.food_name,
             calories: Math.round(food.nf_calories),
-            fat: Math.round(food.nf_total_fat)
+            fat: Math.round(food.nf_total_fat),
+            thumbnailURL: food.photo.thumb
           });
 
           foodCollection.add(foodItem);
@@ -251,7 +253,8 @@ HealthTracker.Views = (function() {
         foodItem = new HTModels.FoodItem({
           name: fi.name,
           calories: fi.calories,
-          fat: fi.fat
+          fat: fi.fat,
+          thumbnailURL: fi.thumbnailURL
         });
         foodCollection.add(foodItem);
       });

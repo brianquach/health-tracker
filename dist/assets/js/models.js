@@ -21,10 +21,11 @@ HealthTracker.Models = (function() {
     default: {
       name: '',
       calories: 0,
-      fat: 0
+      fat: 0,
+      thumbnailURL: ''
     }
   });
-  
+
   return {
     FoodItem: FoodItem
   };

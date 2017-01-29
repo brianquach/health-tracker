@@ -15,3 +15,6 @@
   padding: 2px;
   border: 1px solid #333333;
   border-top: none; }
+  .health-tracker__search li .name {
+    margin-left: 8px;
+    text-transform: capitalize; }
