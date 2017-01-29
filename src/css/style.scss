@@ -25,3 +25,34 @@
     }
   }
 }
+
+.health-tracker__food-list {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  li {
+    display: flex;
+  }
+
+  .food-list__information {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+
+    small {
+      font-style: italic;
+      font-weight: 300;
+    }
+  }
+
+  .food-list__name {
+    text-transform: capitalize;
+  }
+
+  .food-list__remove {
+    position: absolute;
+    right: 0;
+  }
+}

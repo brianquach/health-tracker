@@ -18,3 +18,25 @@
   .health-tracker__search li .name {
     margin-left: 8px;
     text-transform: capitalize; }
+
+.health-tracker__food-list ul {
+  list-style: none;
+  padding: 0; }
+
+.health-tracker__food-list li {
+  display: flex; }
+
+.health-tracker__food-list .food-list__information {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px; }
+  .health-tracker__food-list .food-list__information small {
+    font-style: italic;
+    font-weight: 300; }
+
+.health-tracker__food-list .food-list__name {
+  text-transform: capitalize; }
+
+.health-tracker__food-list .food-list__remove {
+  position: absolute;
+  right: 0; }

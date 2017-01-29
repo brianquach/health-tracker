@@ -20,7 +20,12 @@ HealthTracker.Templates = (function() {
     /** Represents a food item HTML template.
       * @memberof HealthTracker.Templates.
       */
-    foodListItem: '<span><%= name %></span><span>cal: <%= calories %></span>' +
+    foodListItem:
+      '<img src="<%= thumbnailURL %>" class="food-list__thumbnail"' +
+      ' width="40" height="40" alt=food thumbnail">' +
+      '<div class="food-list__information">' +
+      '<span class="food-list__name"><%= name %></span>' +
+      '<small>cal: <%= calories %></small></div>' +
       '<button class="food-list__remove">remove</button>'
   }
 })();
