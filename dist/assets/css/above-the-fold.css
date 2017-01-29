@@ -28,7 +28,10 @@ header {
   padding: 20px 0; }
   .health-tracker__summary label {
     display: block;
-    font-weight: bold; }
+    font-weight: bold;
+    margin: 0; }
+  .health-tracker__summary .summary__stats {
+    margin-bottom: 10px; }
 
 .health-tracker__search {
   border-top: #f0f0f0;

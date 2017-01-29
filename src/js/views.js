@@ -215,15 +215,17 @@ HealthTracker.Views = (function() {
 
     initialize: function() {
       this.totalCaloriesEl = this.$el.find('.total-calories');
+      this.totalFatEl = this.$el.find('.total-fat');
       this.totalCalories = 0;
+      this.totalFat = 0;
 
       foodCollection = new HTCollections.FoodCollection();
 
       searchView = new SearchView();
       foodListView = new FoodListView();
 
-      this.listenTo(foodCollection, 'add', this.addTotalCalories);
-      this.listenTo(foodCollection, 'remove', this.subtractTotalCalories);
+      this.listenTo(foodCollection, 'add', this.addStats);
+      this.listenTo(foodCollection, 'remove', this.subStats);
 
       var storedState = localStorage.getItem('healthTrackerFoodList');
       if (storedState) {
@@ -235,16 +237,21 @@ HealthTracker.Views = (function() {
 
     render: function() {
       this.totalCaloriesEl.html(this.totalCalories + ' cal');
+      this.totalFatEl.html(this.totalFat + ' g');
     },
 
-    addTotalCalories: function(foodItem) {
-      this.totalCalories = this.totalCalories + foodItem.get('calories');
+    addStats: function(foodItem) {
+      this.totalCalories += foodItem.get('calories');
       this.totalCaloriesEl.html(this.totalCalories + ' cal');
+      this.totalFat += foodItem.get('fat');
+      this.totalFatEl.html(this.totalFat + ' g');
     },
 
-    subtractTotalCalories: function(foodItem) {
-      this.totalCalories = this.totalCalories - foodItem.get('calories');
+    subtractStats: function(foodItem) {
+      this.totalCalories -= foodItem.get('calories');
       this.totalCaloriesEl.html(this.totalCalories + ' cal');
+      this.totalFat -= foodItem.get('fat');
+      this.totalFatEl.html(this.totalFat + ' g');
     },
 
     loadState: function(state) {

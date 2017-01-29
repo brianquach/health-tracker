@@ -51,6 +51,11 @@ header {
   label {
     display: block;
     font-weight: bold;
+    margin: 0;
+  }
+
+  .summary__stats {
+    margin-bottom: 10px;
   }
 }
 

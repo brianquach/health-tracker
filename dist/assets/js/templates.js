@@ -25,7 +25,8 @@ HealthTracker.Templates = (function() {
       ' width="40" height="40" alt=food thumbnail">' +
       '<div class="food-list__information">' +
       '<span class="food-list__name"><%= name %></span>' +
-      '<small>cal: <%= calories %></small></div>' +
+      '<small>cal: <%= calories %></small>' +
+      '<small>fat: <%= fat %></small></div>' +
       '<button class="food-list__remove">remove</button>'
   }
 })();
