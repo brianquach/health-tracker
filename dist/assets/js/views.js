@@ -68,7 +68,8 @@ HealthTracker.Views = (function() {
       self.searchFoodCollection.reset();
 
       if (!query) {
-          return;
+        this.clearSearch();
+        return;
       }
 
       $.ajax('https://trackapi.nutritionix.com/v2/search/instant', {
