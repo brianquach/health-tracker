@@ -46,9 +46,10 @@ header {
 
 .health-tracker__summary {
   background-color: #f3f3f3;
+  padding: 20px 0;
 
   label {
-    margin-right: 10px;
+    display: block;
     font-weight: bold;
   }
 }
@@ -56,6 +57,7 @@ header {
 .health-tracker__search {
   border-top: #f0f0f0;
   background-color: #efefef;
+  padding: 20px 0;
 
   .search {
     width: 100%;
@@ -67,4 +69,5 @@ header {
 
 .health-tracker__food-list {
   border-top: #eeeeee;
+  padding: 20px 0;
 }

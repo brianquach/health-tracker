@@ -138,8 +138,8 @@ HealthTracker.Views = (function() {
           var food = resp.foods[0];
           var foodItem = new HTModels.FoodItem({
             name: food.food_name,
-            calories: food.nf_calories,
-            fat: food.nf_total_fat
+            calories: Math.round(food.nf_calories),
+            fat: Math.round(food.nf_total_fat)
           });
 
           foodCollection.add(foodItem);

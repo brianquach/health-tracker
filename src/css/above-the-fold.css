@@ -24,14 +24,16 @@ header {
     font-size: 3.2rem; }
 
 .health-tracker__summary {
-  background-color: #f3f3f3; }
+  background-color: #f3f3f3;
+  padding: 20px 0; }
   .health-tracker__summary label {
-    margin-right: 10px;
+    display: block;
     font-weight: bold; }
 
 .health-tracker__search {
   border-top: #f0f0f0;
-  background-color: #efefef; }
+  background-color: #efefef;
+  padding: 20px 0; }
   .health-tracker__search .search {
     width: 100%;
     border: 1px solid #333;
@@ -42,4 +44,5 @@ header {
     border-radius: 3px; }
 
 .health-tracker__food-list {
-  border-top: #eeeeee; }
+  border-top: #eeeeee;
+  padding: 20px 0; }
