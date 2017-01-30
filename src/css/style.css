@@ -27,6 +27,9 @@
     margin-left: 8px;
     text-transform: capitalize; }
 
+.health-tracker__search li:hover {
+  background-color: #fff991; }
+
 .health-tracker__food-list ul {
   list-style: none;
   padding: 0; }
