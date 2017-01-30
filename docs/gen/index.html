@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="HealthTracker.html">HealthTracker</a></li><li><a href="HealthTracker.Collections.html">HealthTracker.Collections</a></li><li><a href="HealthTracker.Models.html">HealthTracker.Models</a></li><li><a href="HealthTracker.Templates.html">HealthTracker.Templates</a></li><li><a href="HealthTracker.Views.html">HealthTracker.Views</a></li>
+					<li><a href="global.html#HealthTracker">HealthTracker</a></li><li><a href="HealthTracker.Collections.html">HealthTracker.Collections</a></li><li><a href="HealthTracker.Models.html">HealthTracker.Models</a></li><li><a href="HealthTracker.Templates.html">HealthTracker.Templates</a></li><li><a href="HealthTracker.Views.html">HealthTracker.Views</a></li>
 				</ul>
 			</li>
 			
@@ -41,6 +41,13 @@
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
 					<li><a href="HealthTracker.Collections-FoodCollection.html">HealthTracker.Collections~FoodCollection</a></li><li><a href="HealthTracker.Collections-SearchFoodCollection.html">HealthTracker.Collections~SearchFoodCollection</a></li><li><a href="HealthTracker.Models-FoodItem.html">HealthTracker.Models~FoodItem</a></li><li><a href="HealthTracker.Views.App.html">HealthTracker.Views.App</a></li><li><a href="HealthTracker.Views-FoodListItemView.html">HealthTracker.Views~FoodListItemView</a></li><li><a href="HealthTracker.Views-FoodListView.html">HealthTracker.Views~FoodListView</a></li><li><a href="HealthTracker.Views-SearchItemView.html">HealthTracker.Views~SearchItemView</a></li><li><a href="HealthTracker.Views-SearchView.html">HealthTracker.Views~SearchView</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="global.html">Global</a></li>
 				</ul>
 			</li>
 			
@@ -93,7 +100,61 @@
 
 
     <section class="readme-section">
-        <article><h1>health-tracker</h1><p>Web app that helps track your daily calorie powered by BackBoneJS.</p></article>
+        <article><h1>Health Tracker</h1><p>Health web application powered by <a href="https://developer.nutritionix.com/">Nutritionix</a> API that helps track your daily calorie and fat intake. Features include:</p>
+<ul>
+<li>Food search</li>
+<li>Persistent data</li>
+<li>API Error handling</li>
+<li>Responsive layout</li>
+<li>Jasmine test suit</li>
+<li>JSDoc documentation</li>
+</ul>
+<h2>Table of Contents</h2><ul>
+<li><a href="#installation-and-run">Installation and Run</a></li>
+<li><a href="#build-process">Build Process</a></li>
+<li><a href="#documentation-and-test-suite">Documentation and Test Suite</a></li>
+<li><a href="#creator">Creator</a></li>
+<li><a href="#copyright-and-license">Copyright and License</a></li>
+</ul>
+<h2>Installation and Run</h2><p>Grab code source:</p>
+<ul>
+<li>Clone repository: <code>git clone https://github.com/brianquach/health-tracker.git</code> or download the zip <a href="https://github.com/brianquach/health-tracker/archive/master.zip">here</a>.</li>
+<li>Navigate to the directory where you cloned the repo or unzipped the file to and open folder <code>dist</code>.</li>
+<li>Use your favorite browser to open <code>index.html</code>.</li>
+</ul>
+<h2>Build Process</h2><p>This project was built with the aid of <a href="https://bower.io/">Bower</a>, <a href="https://www.npmjs.com/">NPM</a>, <a href="http://sass-lang.com/">Sass</a>, and <a href="http://gulpjs.com/">Gulp</a>.</p>
+<p>To grab the required 3rd-party frameworks, follow the instructions:</p>
+<ul>
+<li>Install <a href="https://bower.io/#install-bower">Bower</a>.</li>
+<li>Navigate to project's root folder.</li>
+<li>Run <code>bower install</code></li>
+<li>Frameworks should be under <code>./bower_components</code></li>
+</ul>
+<p>To run project's build process, follow the following instructions:</p>
+<ul>
+<li>Install <a href="https://docs.npmjs.com/getting-started/installing-node">NPM</a>.</li>
+<li>Install <a href="https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md">Gulp</a>.</li>
+<li>Navigate to project's root folder.</li>
+<li>Run <code>npm install</code> to let NPM install required Gulp plugins.</li>
+<li>Run <code>gulp optimize</code>.</li>
+</ul>
+<p>####Gulp Task Overview:</p>
+<ul>
+<li><code>gulp default</code>: watches JS, CSS, and SCSS to trigger the build task.</li>
+<li><code>gulp build</code>: compiles SASS, minifies JS and CSS, and moves assets to <code>dist</code>.</li>
+<li><code>gulp doc</code>: runs <a href="http://usejsdoc.org/">JSDocs</a> to generate code documentation (<code>docs\gen</code>).</li>
+<li><code>gulp test</code>: runs <a href="https://jasmine.github.io/index.html">Jasmine</a> test suite.</li>
+</ul>
+<h1>Documentation and Test Suite</h1><p>Code is documented using <a href="http://usejsdoc.org/">JSDocs</a> and tested using <a href="https://jasmine.github.io/index.html">Jasmine</a>. See <code>docs\gen</code> to learn more about the code base and structure. To execute unit tests, run <code>gulp test</code> and navigate to <code>localhost:8888</code>.</p>
+<h2>Creator</h2><p><strong>Brian Quach</strong></p>
+<ul>
+<li><https://github.com/brianquach></li>
+<li><http://bkquach.com></li>
+<li><https://www.linkedin.com/in/13rianquach>
+
+</li>
+</ul>
+<h2>Copyright and License</h2><p>Code copyright 2017 Brian Quach. Code released under the <a href="https://github.com/brianquach/health-tracker/blob/master/LICENSE">MIT license</a>.</p></article>
     </section>
 
 
@@ -139,7 +200,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a>
 	
-		on January 27th 2017, 3:51:49 pm
+		on January 30th 2017, 1:34:07 am
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>

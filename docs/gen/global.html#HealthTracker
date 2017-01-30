@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>Documentation Class: FoodListView</title>
+	<title>Documentation Namespace: HealthTracker</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -79,15 +79,13 @@
 		<div id="main">
 			
 
-	<h1 class="page-title">Class: FoodListView</h1>
+	<h1 class="page-title">Namespace: HealthTracker</h1>
 <section>
 
 <header>
     
         <h2>
-            <span class="ancestors"><a href="global.html#HealthTracker">HealthTracker</a><a href="HealthTracker.Views.html">.Views</a>~</span>
-        
-        FoodListView
+        HealthTracker
         </h2>
         
     
@@ -98,28 +96,10 @@
     <div class="container-overview">
     
         
-<hr>
-<dt>
-    <h4 class="name" id="FoodListView"><span class="type-signature"></span>new FoodListView()</h4>
-    
-    
-</dt>
-<dd>
+            <div class="description"><p>Health Tracker namespace.</p></div>
+        
 
-    
-    <div class="description">
-        <p>Represents the food list view.</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
+        
 <dl class="details">
     
 
@@ -159,27 +139,7 @@
 </dl>
 
 
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <h5>Example</h5>
         
-    <pre class="sunlight-highlight-javascript">var foodListView = new FoodListView();</pre>
-
-
-    
-</dd>
-
     
     </div>
 
@@ -191,6 +151,22 @@
 
     
 
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="namespaces.html#HealthTracker.Collections"><a href="HealthTracker.Collections.html">Collections</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#HealthTracker.Models"><a href="HealthTracker.Models.html">Models</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#HealthTracker.Templates"><a href="HealthTracker.Templates.html">Templates</a></a></dt>
+            <dd></dd>
+        
+            <dt><a href="namespaces.html#HealthTracker.Views"><a href="HealthTracker.Views.html">Views</a></a></dt>
+            <dd></dd>
+        </dl>
     
 
     
