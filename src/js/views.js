@@ -1,4 +1,9 @@
 /**
+ * Application view logic.
+ * Author: Brian Quach
+ */
+
+/**
   * Health Tracker namespace.
   * @namespace HealthTracker
   */

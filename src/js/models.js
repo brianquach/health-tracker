@@ -1,3 +1,8 @@
+/**
+ * Application model logic.
+ * Author: Brian Quach
+ */
+
 var HealthTracker = HealthTracker || {};
 
 /**

@@ -1,3 +1,8 @@
+/**
+ * Application collections logic.
+ * Author: Brian Quach
+ */
+
 var HealthTracker = HealthTracker || {};
 
 /**

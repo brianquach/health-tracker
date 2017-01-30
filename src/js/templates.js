@@ -1,3 +1,8 @@
+/**
+ * Application HTML templates.
+ * Author: Brian Quach
+ */
+
 var HealthTracker = HealthTracker || {};
 
 /**
