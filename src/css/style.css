@@ -6,7 +6,7 @@
   top: 10px;
   right: 15px; }
 
-.health-tracker__search .food-choices-wrapper {
+.health-tracker__search .search__food-choices-wrapper {
   position: relative; }
 
 .health-tracker__search .food-choices {
@@ -23,7 +23,7 @@
   padding: 2px;
   border: 1px solid #333333;
   border-top: none; }
-  .health-tracker__search li .name {
+  .health-tracker__search li .search__name {
     margin-left: 8px;
     text-transform: capitalize; }
 

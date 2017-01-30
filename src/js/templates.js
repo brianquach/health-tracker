@@ -16,7 +16,8 @@ HealthTracker.Templates = (function() {
       * @memberof HealthTracker.Templates.
       */
     foodSearchDropDownOption: '<img src="<%= thumbnailURL %>" width="40" ' +
-      'height="40" alt="food thumbnail"><span class="name"><%= name %></span>',
+      'height="40" alt="food thumbnail"><span class="search__name">' +
+      '<%= name %></span>',
     /** Represents a food item HTML template.
       * @memberof HealthTracker.Templates.
       */
