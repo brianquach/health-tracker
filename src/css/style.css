@@ -50,3 +50,10 @@
 .health-tracker__food-list .food-list__remove {
   position: absolute;
   right: 20px; }
+
+footer {
+  background-color: #333333;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 1.3rem;
+  padding: 10px; }
