@@ -225,7 +225,7 @@ HealthTracker.Views = (function() {
       foodListView = new FoodListView();
 
       this.listenTo(foodCollection, 'add', this.addStats);
-      this.listenTo(foodCollection, 'remove', this.subStats);
+      this.listenTo(foodCollection, 'remove', this.subtractStats);
 
       var storedState = localStorage.getItem('healthTrackerFoodList');
       if (storedState) {
