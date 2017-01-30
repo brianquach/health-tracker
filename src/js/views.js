@@ -47,10 +47,13 @@ HealthTracker.Views = (function() {
       this.searchFoodCollection = new HTCollections.SearchFoodCollection();
       this.searchErrorMsg = this.$el.find('.js-search-error').hide();
       this.itemSearchErrorMsg = this.$el.find('.js-item-search-error').hide();
+      this.loading = this.$el.find('.js-loading').hide();
 
       this.on({
         'foodselected': this.clearSearch,
-        'itemsearcherror': this.itemSearchError
+        'itemsearcherror': this.itemSearchError,
+        'itemStartloading': this.itemStartLoading,
+        'itemStoploading': this.itemStopLoading,
       });
     },
 
@@ -68,12 +71,14 @@ HealthTracker.Views = (function() {
       var self = this;
       var query = this.search.val().trim();
 
-      self.searchFoodCollection.reset();
+      this.searchFoodCollection.reset();
 
       if (!query) {
         this.clearSearch();
         return;
       }
+
+      this.loading.show();
 
       $.ajax('https://trackapi.nutritionix.com/v2/search/instant', {
         method: 'GET',
@@ -97,6 +102,8 @@ HealthTracker.Views = (function() {
       }).fail(function() {
         self.searchErrorMsg.show();
         self.render();
+      }).always(function() {
+        self.loading.hide();
       });
     }, 400),
 
@@ -109,6 +116,14 @@ HealthTracker.Views = (function() {
     itemSearchError: function() {
       this.itemSearchErrorMsg.show();
       this.clearSearch();
+    },
+
+    itemStartLoading: function() {
+      this.loading.show();
+    },
+
+    itemStopLoading: function() {
+      this.loading.hide();
     }
   });
 
@@ -137,6 +152,8 @@ HealthTracker.Views = (function() {
       select: function() {
         var query = this.model.get('name');
 
+        searchView.trigger('itemStartloading');
+
         $.ajax('https://trackapi.nutritionix.com/v2/natural/nutrients/', {
           method: 'POST',
           data: {
@@ -158,6 +175,8 @@ HealthTracker.Views = (function() {
           searchView.trigger('foodselected');
         }).fail(function() {
           searchView.trigger('itemsearcherror');
+        }).always(function() {
+          searchView.trigger('itemStoploading');
         });
       }
   });

@@ -1,3 +1,11 @@
+.health-tracker__search .search__wrapper {
+  position: relative; }
+
+.health-tracker__search .search__loading {
+  position: absolute;
+  top: 10px;
+  right: 15px; }
+
 .health-tracker__search .food-choices-wrapper {
   position: relative; }
 
