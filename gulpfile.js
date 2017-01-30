@@ -3,6 +3,9 @@ var jasmineBrowser = require('gulp-jasmine-browser');
 var watch = require('gulp-watch');
 var jsdoc = require('gulp-jsdoc3');
 var sass = require('gulp-sass');
+var uglify = require('gulp-uglify');
+var cleanCSS = require('gulp-clean-css');
+var sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
   scripts: './src/js/**/*.js',
@@ -20,16 +23,20 @@ function watchScripts() {
 }
 
 /** Project standard build process */
-gulp.task('build', ['move-assets']);
+gulp.task('build', ['compile-sass'], function() {
+  gulp.src('./src/js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist/assets/js'))
 
-gulp.task('move-assets', ['compile-sass'], function() {
   // Move JS files
-  gulp.src('./src/js/**/*.js')
-    .pipe(gulp.dest('./dist/assets/js'));
+  gulp.src('./src/js/vendor/*.js')
+    .pipe(gulp.dest('./dist/assets/js/vendor'));
 
-  // Move CSS files
-  gulp.src('./src/css/**/*.css')
+  gulp.src(paths.styles)
+    .pipe(cleanCSS())
     .pipe(gulp.dest('./dist/assets/css'));
+
+
 });
 
 /** Compile Sass */
