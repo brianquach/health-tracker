@@ -4,6 +4,7 @@
     <title>Health Tracker</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link href="assets/css/above-the-fold.css" rel="stylesheet">
   </head>
 
@@ -13,19 +14,21 @@
     </header>
     <main id="health-tracker" class="container-fluid">
       <div class="row health-tracker__summary">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-2">
           <h2>Summary</h2>
         </div>
-        <div class="col-xs-12 summary__stats">
+        <div class="col-xs-12 col-sm-3 col-sm-offset-2 summary__stats">
           <label>Total Calories: </label><span class="total-calories"></span>
         </div>
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-3 col-sm-offset-2 summary__stats">
           <label>Total Fat: </label><span class="total-fat"></span>
         </div>
       </div>
       <div class="row health-tracker__search js-food-search">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-2">
           <h2>Search</h2>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <input class="search" type="text" placeholder="Search foods">
           <div class="food-choices-wrapper">
             <ul class="food-choices"></ul>
@@ -33,8 +36,10 @@
         </div>
       </div>
       <div class="row health-tracker__food-list">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-2">
           <h2>Food Items</h2>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <ul class="js-food-list"></ul>
         </div>
       </div>
