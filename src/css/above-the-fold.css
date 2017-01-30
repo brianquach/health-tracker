@@ -37,7 +37,7 @@ header {
   border-top: #f0f0f0;
   background-color: #e5e5e5;
   padding: 20px 0; }
-  .health-tracker__search .search {
+  .health-tracker__search .search__search-input {
     width: 100%;
     border: 1px solid #333;
     padding: 5px;

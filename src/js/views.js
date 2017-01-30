@@ -38,12 +38,12 @@ HealthTracker.Views = (function() {
     el: '.js-food-search',
 
     events: {
-      'keydown .search': 'searchFoods',
+      'keydown .js-search': 'searchFoods',
     },
 
     initialize: function() {
-      this.search = this.$el.find('.search');
-      this.foodChoices = this.$el.find('.food-choices');
+      this.search = this.$el.find('.js-search');
+      this.foodChoices = this.$el.find('.js-food-choices');
       this.searchFoodCollection = new HTCollections.SearchFoodCollection();
       this.searchErrorMsg = this.$el.find('.js-search-error').hide();
       this.itemSearchErrorMsg = this.$el.find('.js-item-search-error').hide();
@@ -241,8 +241,8 @@ HealthTracker.Views = (function() {
     el: '#health-tracker',
 
     initialize: function() {
-      this.totalCaloriesEl = this.$el.find('.total-calories');
-      this.totalFatEl = this.$el.find('.total-fat');
+      this.totalCaloriesEl = this.$el.find('.js-total-calories');
+      this.totalFatEl = this.$el.find('.js-total-fat');
       this.totalCalories = 0;
       this.totalFat = 0;
 

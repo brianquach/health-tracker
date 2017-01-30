@@ -18,10 +18,10 @@
           <h2>Summary</h2>
         </div>
         <div class="col-xs-12 col-sm-3 col-sm-offset-2 summary__stats">
-          <label>Total Calories: </label><span class="total-calories"></span>
+          <label>Total Calories: </label><span class="js-total-calories"></span>
         </div>
         <div class="col-xs-12 col-sm-3 col-sm-offset-2 summary__stats">
-          <label>Total Fat: </label><span class="total-fat"></span>
+          <label>Total Fat: </label><span class="js-total-fat"></span>
         </div>
       </div>
       <div class="row health-tracker__search js-food-search">
@@ -30,11 +30,11 @@
         </div>
         <div class="col-xs-12 col-sm-8 col-sm-offset-2">
           <div class="search__wrapper">
-            <input class="search" type="text" placeholder="Search foods">
+            <input class="search__search-input js-search" type="text" placeholder="Search foods">
             <image src="assets/img/rolling.svg" alt="loading..." class="search__loading js-loading" width="20" height="20">
           </div>
           <div class="search__food-choices-wrapper">
-            <ul class="search__food-choices"></ul>
+            <ul class="search__food-choices js-food-choices"></ul>
           </div>
           <div class="text-danger js-search-error">
             Search is down at the moment.

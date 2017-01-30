@@ -9,7 +9,7 @@
 .health-tracker__search .search__food-choices-wrapper {
   position: relative; }
 
-.health-tracker__search .food-choices {
+.health-tracker__search .search__food-choices {
   position: absolute;
   background-color: #fefefe;
   z-index: 1;
