@@ -34,6 +34,7 @@
 
   li {
     display: flex;
+    margin-bottom: 16px;
   }
 
   .food-list__information {
@@ -44,6 +45,7 @@
     small {
       font-style: italic;
       font-weight: 300;
+      margin-right: 5px;
     }
   }
 
@@ -53,6 +55,6 @@
 
   .food-list__remove {
     position: absolute;
-    right: 0;
+    right: 20px;
   }
 }

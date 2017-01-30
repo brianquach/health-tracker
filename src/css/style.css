@@ -24,7 +24,8 @@
   padding: 0; }
 
 .health-tracker__food-list li {
-  display: flex; }
+  display: flex;
+  margin-bottom: 16px; }
 
 .health-tracker__food-list .food-list__information {
   display: flex;
@@ -32,11 +33,12 @@
   margin-left: 5px; }
   .health-tracker__food-list .food-list__information small {
     font-style: italic;
-    font-weight: 300; }
+    font-weight: 300;
+    margin-right: 5px; }
 
 .health-tracker__food-list .food-list__name {
   text-transform: capitalize; }
 
 .health-tracker__food-list .food-list__remove {
   position: absolute;
-  right: 0; }
+  right: 20px; }
