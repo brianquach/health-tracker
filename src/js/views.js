@@ -45,9 +45,12 @@ HealthTracker.Views = (function() {
       this.search = this.$el.find('.search');
       this.foodChoices = this.$el.find('.food-choices');
       this.searchFoodCollection = new HTCollections.SearchFoodCollection();
+      this.searchErrorMsg = this.$el.find('.js-search-error').hide();
+      this.itemSearchErrorMsg = this.$el.find('.js-item-search-error').hide();
 
       this.on({
-        'foodselected': this.clearSearch
+        'foodselected': this.clearSearch,
+        'itemsearcherror': this.itemSearchError
       });
     },
 
@@ -92,8 +95,8 @@ HealthTracker.Views = (function() {
         });
         self.render();
       }).fail(function() {
+        self.searchErrorMsg.show();
         self.render();
-        // TODO: handle error when API cannot connect
       });
     }, 400),
 
@@ -101,6 +104,11 @@ HealthTracker.Views = (function() {
       this.search.val('');
       this.searchFoodCollection.reset();
       this.foodChoices.html('');
+    },
+
+    itemSearchError: function() {
+      this.itemSearchErrorMsg.show();
+      this.clearSearch();
     }
   });
 
@@ -149,7 +157,7 @@ HealthTracker.Views = (function() {
           foodCollection.saveToLocalStorage();
           searchView.trigger('foodselected');
         }).fail(function() {
-          // TODO: handle error when API cannot connect
+          searchView.trigger('itemsearcherror');
         });
       }
   });
