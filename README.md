@@ -44,7 +44,7 @@ To run project's build process, follow the following instructions:
 * `gulp test`: runs [Jasmine](https://jasmine.github.io/index.html) test suite.
 
 # Documentation and Test Suite
-Code is documented using [JSDocs](http://usejsdoc.org/) and tested using [Jasmine](https://jasmine.github.io/index.html). See `docs\gen` to learn more about the code base and structure. To execute unit tests, run `gulp test` and navigate to `localhost:8888`.
+Code is documented using [JSDocs](http://usejsdoc.org/) and tested using [Jasmine](https://jasmine.github.io/index.html). See `docs\gen\index.html` to learn more about the code base and structure. To execute unit tests, run `gulp test` and navigate to `localhost:8888`.
 
 ## Creator
 **Brian Quach**
