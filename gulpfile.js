@@ -25,7 +25,9 @@ function watchScripts() {
 /** Project standard build process */
 gulp.task('build', ['compile-sass'], function() {
   gulp.src('./src/js/*.js')
+    .pipe(sourcemaps.init())
     .pipe(uglify())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/assets/js'))
 
   // Move JS files
@@ -33,10 +35,10 @@ gulp.task('build', ['compile-sass'], function() {
     .pipe(gulp.dest('./dist/assets/js/vendor'));
 
   gulp.src(paths.styles)
+    .pipe(sourcemaps.init())
     .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./dist/assets/css'));
-
-
 });
 
 /** Compile Sass */
