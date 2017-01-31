@@ -13,7 +13,7 @@ header {
   font-family: Helvetica, sans-serif;
   font-size: 18px;
   color: #282828;
-  background-color: #a88d61; }
+  background-color: #333333; }
   .health-tracker h1,
   .health-tracker h2,
   .health-tracker h3,
@@ -52,4 +52,5 @@ header {
 
 .health-tracker__food-list {
   border-top: #eeeeee;
-  padding: 20px 0; }
+  padding: 20px 0;
+  background-color: #a88d61; }

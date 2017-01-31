@@ -28,7 +28,7 @@ header {
   font-family: $font-stack;
   font-size: $font-size;
   color: $font-color;
-  background-color: #a88d61;
+  background-color: #333333;
 
   h1,
   h2,
@@ -80,4 +80,5 @@ header {
 .health-tracker__food-list {
   border-top: #eeeeee;
   padding: 20px 0;
+  background-color: #a88d61;
 }
