@@ -23,7 +23,7 @@ function watchScripts() {
 }
 
 /** Project standard build process */
-gulp.task('build', ['compile-sass', 'images'], function() {
+gulp.task('build', ['compile-sass', 'images', 'font-awesome'], function() {
   gulp.src('./src/js/*.js')
     .pipe(sourcemaps.init())
     .pipe(uglify())
@@ -44,6 +44,11 @@ gulp.task('build', ['compile-sass', 'images'], function() {
 gulp.task('images', function() {
   gulp.src('./src/img/*.{svg|png|jpg|gif}')
     .pipe(gulp.dest('./dist/assets/img'))
+});
+
+gulp.task('font-awesome', function() {
+  gulp.src('./src/font/*')
+    .pipe(gulp.dest('./dist/assets/css/font'))
 });
 
 /** Compile Sass */

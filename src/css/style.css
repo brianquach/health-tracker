@@ -56,7 +56,12 @@
 
 .health-tracker__food-list .food-list__remove {
   position: absolute;
-  right: 20px; }
+  right: 20px;
+  border: 1px solid #212121;
+  background-color: rgba(0, 0, 0, 0.1); }
+
+.health-tracker__food-list .food-list__remove:hover {
+  background-color: rgba(20, 68, 89, 0.5); }
 
 footer {
   background-color: #333333;

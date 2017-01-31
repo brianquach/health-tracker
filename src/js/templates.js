@@ -33,6 +33,7 @@ HealthTracker.Templates = (function() {
       '<span class="food-list__name"><%= name %></span><div>' +
       '<small>cal: <%= calories %>,</small>' +
       '<small>fat (g): <%= fat %></small></div></div>' +
-      '<button class="btn food-list__remove">remove</button>'
+      '<button class="btn food-list__remove">' +
+      '<i class="fa fa-times" aria-hidden="true"></i></button>'
   }
 })();

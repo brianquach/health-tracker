@@ -75,6 +75,11 @@
   .food-list__remove {
     position: absolute;
     right: 20px;
+    border: 1px solid #212121;
+    background-color: rgba(0, 0, 0, .1);
+  }
+  .food-list__remove:hover {
+    background-color: rgba(20, 68, 89, .5);
   }
 }
 
