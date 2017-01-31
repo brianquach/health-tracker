@@ -1,5 +1,5 @@
 # Health Tracker
-Health web application powered by [Nutritionix](https://developer.nutritionix.com/) API that helps track your daily calorie and fat intake. Features include:
+Health web application powered by [Nutritionix](https://developer.nutritionix.com/) API that helps track your daily calorie and fat intake. A demo can be found [here](https://brianquach.github.io/health-tracker/dist/index.html). Features include:
 
 * Food search
 * Persistent data
