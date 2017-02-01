@@ -16,6 +16,9 @@ Health web application powered by [Nutritionix](https://developer.nutritionix.co
 * [Copyright and License](#copyright-and-license)
 
 ## Installation and Run
+Demo:
+<https://brianquach.github.io/health-tracker/dist/index.html>
+
 Grab code source:
 * Clone repository: `git clone https://github.com/brianquach/health-tracker.git` or download the zip [here](https://github.com/brianquach/health-tracker/archive/master.zip).
 * Navigate to the directory where you cloned the repo or unzipped the file to and open folder `dist`.
