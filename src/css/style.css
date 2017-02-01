@@ -23,6 +23,16 @@
   left: 0;
   right: 0; }
 
+.health-tracker__search .search__no-results {
+  position: absolute;
+  z-index: 1;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #333333; }
+
 .health-tracker__search li {
   padding: 2px;
   border: 1px solid #333333;
@@ -57,7 +67,7 @@
 .health-tracker__food-list .food-list__remove {
   position: absolute;
   right: 20px;
-  border: 1px solid #212121;
+  border: 1px solid #333333;
   background-color: rgba(0, 0, 0, 0.1); }
 
 .health-tracker__food-list .food-list__remove:hover {

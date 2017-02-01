@@ -3,6 +3,8 @@
  * Author: Brian Quach
  */
 
+$border-color: #333333;
+
 .health-tracker__search {
   .search__wrapper {
     position: relative;
@@ -29,9 +31,20 @@
     right: 0;
   }
 
+  .search__no-results {
+    position: absolute;
+    z-index: 1;
+    padding: 5px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid $border-color;
+  }
+
   li {
     padding: 2px;
-    border: 1px solid #333333;
+    border: 1px solid $border-color;
     border-top: none;
 
     .search__name {
@@ -75,7 +88,7 @@
   .food-list__remove {
     position: absolute;
     right: 20px;
-    border: 1px solid #212121;
+    border: 1px solid $border-color;
     background-color: rgba(0, 0, 0, .1);
   }
   .food-list__remove:hover {

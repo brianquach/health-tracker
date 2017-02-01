@@ -52,6 +52,7 @@ HealthTracker.Views = (function() {
       this.searchFoodCollection = new HTCollections.SearchFoodCollection();
       this.searchErrorMsg = this.$el.find('.js-search-error').hide();
       this.itemSearchErrorMsg = this.$el.find('.js-item-search-error').hide();
+      this.noResultsMsg = this.$el.find('.js-no-results').hide();
       this.loading = this.$el.find('.js-loading').hide();
 
       this.on({
@@ -77,6 +78,7 @@ HealthTracker.Views = (function() {
       var query = this.search.val().trim();
 
       this.searchFoodCollection.reset();
+      this.noResultsMsg.hide();
 
       if (!query) {
         this.clearSearch();
@@ -103,6 +105,11 @@ HealthTracker.Views = (function() {
           });
           self.searchFoodCollection.add(foodItem);
         });
+
+        if (foodItems.length < 1) {
+          self.noResultsMsg.show();
+        }
+
         self.render();
       }).fail(function() {
         self.searchErrorMsg.show();
